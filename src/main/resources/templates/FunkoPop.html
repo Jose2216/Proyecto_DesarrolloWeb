@@ -1,0 +1,172 @@
+<html lang="es">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Akihabara - Funko Pop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/styleFunkoPop.css">
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <nav class="navigation">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Manga</a></li>
+            <li><a href="#">Funko pop</a></li>
+            <li><a href="#">Accesorios</a></li>
+            <li><a href="#">Mas vendidos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Popular Series</h2>
+        <div class="row popular-series">
+            <div class="col">
+                <img src="https://logos-world.net/wp-content/uploads/2021/09/One-Piece-Logo.png" alt="One Piece" class="series-img">
+            </div>
+            <div class="col">
+                <img src="https://i.pinimg.com/originals/b8/47/27/b84727abde633dd81eb7e0caa8a429fd.png" alt="Kimetsu no Yaiba" class="series-img">
+            </div>
+            <div class="col">
+                <img src="https://assets.turbologo.com/blog/en/2021/11/14061115/Naruto_logo.png" alt="Naruto" class="series-img">
+            </div>
+            <div class="col">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Jujutsu_Kaisen_logo.png" alt="Jujutsu Kaisen" class="series-img">
+            </div>
+            <div class="col">
+                <img src="https://1000logos.net/wp-content/uploads/2023/10/Chainsaw-Man-Logo.jpg" alt="Chainsaw Man" class="series-img">
+            </div>
+            <div class="col">
+                <img src="https://logos-world.net/wp-content/uploads/2022/01/Attack-on-Titan-Logo.png" alt="Shingeki no Kyojin" class="series-img">
+            </div>
+        </div>
+
+        <h2>Funko pop</h2>
+        <div class="row productos">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/mahito.PNG}" class="card-img-top" alt="Jujutsu Kaisen Mahito Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Jujutsu Kaisen Mahito Funko Pop</h5>
+                        <p class="card-text">US$23.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Goku.jpg}" class="card-img-top" alt="Dragon Ball Goku Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Dragon Ball Goku Funko Pop</h5>
+                        <p class="card-text">US$32.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Sasuke.jpg}" class="card-img-top" alt="Naruto Shippuden Sasuke Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Naruto Shippuden Sasuke Funko Pop</h5>
+                        <p class="card-text">US$17.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Shinazugawa.jpg}" class="card-img-top" alt="Kimetsu no Yaiba Sanemi Shinazugawa Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Kimetsu no Yaiba Sanemi Shinazugawa Funko Pop</h5>
+                        <p class="card-text">US$25.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Gon.PNG}" class="card-img-top" alt="Hunter x Hunter Gon Freecs Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Hunter x Hunter Gon Freecs Funko Pop</h5>
+                        <p class="card-text">US$16.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Mikasa.PNG}" class="card-img-top" alt="Shingeki no Kyojin Mikasa Ackerman Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Shingeki no Kyojin Mikasa Ackerman Funko Pop</h5>
+                        <p class="card-text">US$23.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Natsu_1.jpg}" class="card-img-top" alt="Fairy Tail Natsu Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Fairy Tail Natsu Funko Pop</h5>
+                        <p class="card-text">US$12.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Bakugo.PNG}" class="card-img-top" alt="Boku no Hero Academia Katsuki Bakugo Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Boku no Hero Academia Katsuki Bakugo Funko Pop</h5>
+                        <p class="card-text">US$23.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Ryuk.jpg}" class="card-img-top" alt="Death Note Ryuk Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Death Note Ryuk Funko Pop</h5>
+                        <p class="card-text">US$20.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Kirito.jpg}" class="card-img-top" alt="Sword Art Online Kirito Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Sword Art Online Kirito Funko Pop</h5>
+                        <p class="card-text">US$24.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/Kakashi.PNG}" class="card-img-top" alt="Naruto Shippuden Kakashi Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">Naruto Shippuden Kakashi Funko Pop</h5>
+                        <p class="card-text">US$23.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{/images/nami.PNG}" class="card-img-top" alt="One Piece Nami Funko Pop">
+                    <div class="card-body">
+                        <h5 class="card-title">One Piece Nami Funko Pop</h5>
+                        <p class="card-text">US$16.99</p>
+                        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
