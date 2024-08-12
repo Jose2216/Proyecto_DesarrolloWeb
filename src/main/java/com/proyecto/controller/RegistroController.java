@@ -31,7 +31,7 @@ public class RegistroController {
     public String recordar(Model model, Usuario usuario) {
         return "/registro/recordar";
     }
-
+    
     @PostMapping("/crearUsuario")
     public String crearUsuario(Model model, Usuario usuario)
             throws MessagingException {
