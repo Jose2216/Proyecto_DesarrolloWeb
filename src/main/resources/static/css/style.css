@@ -107,6 +107,46 @@ html, body {
 }
 
 
+/*  Seccion del menu de barra  */ 
+
+
+nav {
+    background-color: #f6e0e3;
+    position: fixed;
+    top: 180px;
+    left: 0%;
+    right: 0%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center
+}
+
+nav ul li {
+    float: middle;
+}
+
+nav ul li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+    font-family: "Verdana",sans-serif;
+}
+
+nav ul li a:hover {
+    background-color: #d87885;
+    color: white;
+}
+
+
+
 
 /* SECCION DEL FOOTER */
 
