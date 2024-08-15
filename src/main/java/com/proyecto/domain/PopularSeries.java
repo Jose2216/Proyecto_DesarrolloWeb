@@ -1,4 +1,3 @@
-/*
 package com.proyecto.domain;
 
 import jakarta.persistence.Column;
@@ -31,10 +30,12 @@ public class PopularSeries implements Serializable {
     @JoinColumn(name = "id_PSerie")
     List<Producto> productos;
 
-    public PopularSeries(String nombre, String rutaImagen) {
+    public PopularSeries() {
+    }
+    
+    public PopularSeries(String descripcion) {
         this.nombre = nombre;
         this.rutaImagen = rutaImagen;
     }
 
 }
-*/

@@ -1,4 +1,3 @@
-/*
 package com.proyecto.dao;
 
 import com.proyecto.domain.Producto;
@@ -13,6 +12,5 @@ public interface ProductoDao extends JpaRepository<Producto, Long> {
 
     List<Producto> findByCategoria(Categoria categoria);
 
-    List<Producto> findByPopularSeries(PopularSeries popularSeries);
+    List<Producto> findByPSerie(PopularSeries pSerie);
 }
-*/

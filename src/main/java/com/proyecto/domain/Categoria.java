@@ -1,5 +1,7 @@
 package com.proyecto.domain;
 
+package com.proyecto.domain;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import lombok.Data;
 
 @Data 
 @Entity 
-@Table(name = "categoria")
+@Table(name = "Categoria")
 
 public class Categoria implements Serializable { 
 
@@ -26,7 +28,6 @@ public class Categoria implements Serializable {
     private long idCategoria;
     private String nombre;
     private String informacion;
-    private String rutaImagen;
 
     @OneToMany 
     @JoinColumn(name = "id_categoria")
@@ -35,11 +36,9 @@ public class Categoria implements Serializable {
     public Categoria() {
     }
 
-    public Categoria(String nombre, String informacion, String rutaImagen, List<Producto> productos) {
+    public Categoria(String descripcion) {
         this.nombre = nombre;
         this.informacion = informacion;
-        this.rutaImagen = rutaImagen;
-        this.productos = productos;
     }
 
     

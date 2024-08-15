@@ -1,6 +1,4 @@
-
 package com.proyecto.domain;
-
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "producto")
+@Table(name = "Producto")
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,15 +18,17 @@ public class Producto implements Serializable {
     private String nombre;
     private String descripcion;
     private double precio;
-    private int existencias;
     private String rutaImagen;
-    private String status;
 
     @ManyToOne 
     @JoinColumn(name = "id_categoria")
     Categoria categoria;
+    
+    @ManyToOne 
+    @JoinColumn(name = "id_PSerie")
+    PopularSeries pSerie;
+    
 
     public Producto() {
     }
-
 }
