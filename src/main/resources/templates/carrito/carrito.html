@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <link rel="stylesheet" th:href="@{/css/styleCarrito.css}" />
+    </head>
+
+    <body>
+        <div class = cuadrado>
+            <h1>Carrito</h1>
+            <div id= line></div>
+            <div id="image-container">
+                <img id="dinamic-image" src="" alt="imagen aqui">
+            </div>
+            <div id = "descr_position1">
+                <span class="descripcion">Jujutsu Kaisen</span>
+                <span class="descripcion">Mahito Funko</span>
+            </div>
+            <div id= divider></div>
+            <div id="image-container2">
+                <img id="dinamic-image2" src="" alt="imagen aqui">
+            </div>
+            <div id = "descr_position2">
+                <span class="descripcion">Death Note</span>
+                <span class="descripcion">Ryuk Funko Pop</span>
+            </div>
+            <div id= divider2></div>
+        </div>
+        <div id="cuadrado2"></div>
+    </body>
+</html>
