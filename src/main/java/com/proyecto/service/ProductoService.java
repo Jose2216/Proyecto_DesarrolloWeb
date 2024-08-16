@@ -4,7 +4,6 @@ import com.proyecto.domain.Categoria;
 import com.proyecto.domain.PopularSeries;
 import com.proyecto.domain.Producto;
 import java.util.List;
-import org.springframework.data.repository.query.Param;
 
 public interface ProductoService {
      public List<Producto> getProductos();

@@ -47,10 +47,15 @@ public class ProductoServiceImpl implements ProductoService {
         return productoDao.findByCategoria(categoria);
     }
 
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<Producto> findByPSerie(PopularSeries pSerie) {
+//        return productoDao.findByPSerie(pSerie);
+//    }
+
     @Override
-    @Transactional(readOnly = true)
-    public List<Producto> findByPSerie(PopularSeries popularseries) {
-        return productoDao.findByPSerie(popularseries);
+    public List<Producto> findByPSerie(PopularSeries pSerie) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
