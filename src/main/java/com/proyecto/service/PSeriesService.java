@@ -1,4 +1,3 @@
-/*
 package com.proyecto.service;
 
 import com.proyecto.domain.PopularSeries;
@@ -6,12 +5,11 @@ import java.util.List;
 
 public interface PSeriesService {
 
-    List<PopularSeries> getPopularSeries();
+    public List<PopularSeries> getPopularSeries();
 
-    PopularSeries getPopularSeries(PopularSeries popularSeries);
+    public PopularSeries getPopularSeries(PopularSeries popularseries);
 
-    void save(PopularSeries popularSeries);
+    public void save(PopularSeries popularseries);
 
-    void delete(PopularSeries popularSeries);
+    public void delete(PopularSeries popularseries);
 }
-*/
