@@ -12,5 +12,5 @@ public interface ProductoDao extends JpaRepository<Producto, Long> {
 
     List<Producto> findByCategoria(Categoria categoria);
 
-    List<Producto> findByPSerie(PopularSeries pSerie);
+//    List<Producto> findByPSerie(PopularSeries pSerie);
 }
