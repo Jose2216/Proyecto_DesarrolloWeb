@@ -36,7 +36,7 @@
                             </div>
                         </section>
 
-                        <section class="popular-series">
+                        <section th:fragment="popular-series" class="popular-series">
                             <div th:each="popularseries : ${popularseries}">
                                 <a th:href="@{/productos/listado/serie/{id}(id=${popularseries.idPSerie})}">
                                     <img th:src="@{${popularseries.rutaImagen}}" alt="[[${popularseries.nombre}]]" class="series-img">
