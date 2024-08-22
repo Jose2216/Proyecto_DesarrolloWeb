@@ -6,7 +6,7 @@
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-        <!--<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3"> 
@@ -20,9 +20,9 @@
                     </div>
                 </div>
             </div>
-        </section>-->
+        </section>
         <!-- 2 Fragmento para agregar usuario, es la ventana modal -->
-        <!--<section th:fragment="agregarUsuario">
+        <section th:fragment="agregarUsuario">
             <div id="agregarUsuario"
                  class="modal fade"
                  tabindex="-1"
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-        </section>-->
+        </section>
         <!-- 3 Sección principal para mostrar la informaccion de la entidad usuario -->
         <section th:fragment="listadoUsuarios" id="usuarios">
             <div class="container">
@@ -189,7 +189,7 @@
             </div>
         </section>
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
-        <!--<section th:fragment="botonesEditar">
+        <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
@@ -197,19 +197,19 @@
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid" authorize="hasRole('ROLE_ADMIN')"> 
+                    <div class="col-md-4 d-grid"> 
                         <a href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid" authorize="hasRole('ROLE_ADMIN')">
+                    <div class="col-md-4 d-grid">
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>
                 </div>
             </div>
-        </section>-->
+        </section>
     </body>
 </html>
