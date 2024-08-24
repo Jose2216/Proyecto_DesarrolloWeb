@@ -10,7 +10,12 @@
                     <section th:fragment="categoriasTabs" id="categorias">
                         <div class="row py-4">
                             <ul class="nav nav-tabs">
-
+                                <li class="nav-item">
+                                    <a class="nav-link" 
+                                       aria-current="page" 
+                                       href="/pruebas/listado"
+                                       >[[#{producto.inicio}]]</a>
+                                </li>
                                 <li th:each="categoria : ${categorias}" class="nav-item">
                                     <a class="nav-link" 
                                        th:href="@{/producto/listado/categoria/}+${categoria.idCategoria}"
