@@ -1,65 +1,50 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Akihabara - Funko Pop</title>
+        <title>Akihabara</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-            <link rel="stylesheet" href="./css/styleProductos.css">
+            <link rel="stylesheet" href="./css/style.css">
                 </head>
-
                 <body>
+                    <section th:fragment="categoriasTabs" id="categorias">
+                        <div class="row py-4">
+                            <ul class="nav nav-tabs">
 
-                    <header th:replace="~{layout/plantilla :: header}"></header>
+                                <li th:each="categoria : ${categorias}" class="nav-item">
+                                    <a class="nav-link" 
+                                       th:href="@{/producto/listado/categoria/}+${categoria.idCategoria}"
+                                       >[[${categoria.nombre_categoria}]]</a>
+                                </li>                    
+                            </ul>
+                        </div>
+                    </section>
 
+                    <section th:fragment="popularSeries" class="popular-series">
+                        <div class="series-container" th:each="popularseries : ${popularseries}">
+                            <a th:href="@{/producto/listado/serie/}+${popularseries.idPSerie}">
+                                <img th:src="@{${popularseries.rutaImagen}}" alt="[[${popularseries.nombre}]]" class="series-img">
+                            </a>
+                        </div>
+                    </section>
 
-                    <nav class="navigation">
-
-                        <ul>       
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Manga</a></li>
-                            <li><a href="#">Funko pop</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                            <li><a href="#">Figuras</a></li>    
-                        </ul>
-
-                        <section th:fragment="categoriasTabs" id="categorias">
-                            <div class="row py-4">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="/productos/listado">[[#{pruebas.todas}]]</a>
-                                    </li>
-                                    <li th:each="categoria : ${categorias}" class="navigation">
-                                        <a class="nav-link" th:href="@{/productos/listado/categoria/{id}(id=${categoria.idCategoria})}">[[${categoria.nombre_categoria}]]</a>
-                                    </li>                    
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="popular-series">
-                            <div th:each="popularseries : ${popularseries}">
-                                <a th:href="@{/productos/listado/serie/{id}(id=${popularseries.idPSerie})}">
-                                    <img th:src="@{${popularseries.rutaImagen}}" alt="[[${popularseries.nombre}]]" class="series-img">
-                                </a>
-                            </div>
-                        </section>
-
-                        <section th:fragment="listadoProductos" id="productos">
-                            <div class="col">
-                                <div class="card" style="width: 18rem;" th:each="p : ${productos}">
-                                    <figure>
-                                        <img th:src="${p.rutaImagen}" class="card-img-top">
-                                            <figcaption>[[${p.precio}]]</figcaption>
-                                    </figure>
-                                    <div class="card-body">
-                                        <h4 class="card-title">[[${p.descripcion}]]</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">[[${p.precio}]]</p>
-                                        <a href="#" class="btn btn-primary">Añadir al carrito</a>    
-                                    </div>
+                    <section th:fragment="listadoProductos" id="productos">
+                        <div class="row row-cols-4">
+                            <div class="card" th:each="p : ${productos}">
+                                <figure><img th:src="${p.rutaImagen}" 
+                                             class="card-img-top" alt="..."
+                                             height="200"/>
+                                </figure>
+                                <div class="card-header">
+                                    <h4 class="card-title">[[${p.nombre}]]</h4>
                                 </div>
+                                <div class="card-body">
+                                    <h4 class="card-text">[[${p.precio}]]</h4>
+                                </div>
+                                <button th:text="'Añadir al carrito'"></button>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
                 </body>
+                </html>

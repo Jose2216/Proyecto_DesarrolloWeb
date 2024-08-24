@@ -1,7 +1,5 @@
 package com.proyecto.service.impl;
 
-import com.proyecto.dao.CategoriaDao;
-import com.proyecto.dao.PSeriesDao;
 import com.proyecto.dao.ProductoDao;
 import com.proyecto.domain.Categoria;
 import com.proyecto.domain.PopularSeries;
@@ -9,10 +7,10 @@ import com.proyecto.domain.Producto;
 import com.proyecto.service.ProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
@@ -20,8 +18,12 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Producto> getProductos() {
-        return productoDao.findAll();
+    public List<Producto> getProductos(boolean activos) {
+        var lista = productoDao.findAll();
+        if (activos) {
+            lista.removeIf(e -> !e.isActivo());
+        }
+        return lista;
     }
 
     @Override
@@ -42,15 +44,4 @@ public class ProductoServiceImpl implements ProductoService {
         productoDao.delete(producto);
     }
 
-    @Transactional(readOnly = true)
-    public List<Producto> findByCategoria(Categoria categoria) {
-        return productoDao.findByCategoria(categoria);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Producto> findByPSerie(PopularSeries popularseries) {
-        return productoDao.findByPSerie(popularseries);
-    }
-    
 }

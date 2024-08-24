@@ -1,7 +1,5 @@
 package com.proyecto.domain;
 
-package com.proyecto.domain;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,33 +12,31 @@ import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
 
-@Data 
-@Entity 
-@Table(name = "Categoria")
+@Data
+@Entity
+@Table(name = "categoria")
 
-public class Categoria implements Serializable { 
+public class Categoria implements Serializable {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    @Column(name = "id_categoria") 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_categoria")
     private long idCategoria;
-    private String nombre;
-    private String informacion;
+    private String nombre_categoria;
+    private boolean activo;
 
-    @OneToMany 
-    @JoinColumn(name = "id_categoria")
+    @OneToMany
+    @JoinColumn(name = "id_categoria", updatable = false)
     List<Producto> productos;
 
     public Categoria() {
     }
 
-    public Categoria(String descripcion) {
-        this.nombre = nombre;
-        this.informacion = informacion;
+    public Categoria(String categoria, boolean activo) {
+        this.nombre_categoria = categoria;
+        this.activo = activo;
     }
-
-    
 
 }

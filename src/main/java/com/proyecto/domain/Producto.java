@@ -1,7 +1,7 @@
 package com.proyecto.domain;
+
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import lombok.Data;
 
 @Data
@@ -15,20 +15,27 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private Long idProducto;
+
     private String nombre;
     private String descripcion;
     private double precio;
     private String rutaImagen;
+    private boolean activo;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "id_categoria")
     Categoria categoria;
-    
-    @ManyToOne 
+
+    @ManyToOne
     @JoinColumn(name = "id_PSerie")
-    PopularSeries pSerie;
-    
+    private PopularSeries PSerie;
 
     public Producto() {
     }
+
+    public Producto(String producto, boolean activo) {
+        this.nombre = producto;
+        this.activo = activo;
+    }
+
 }

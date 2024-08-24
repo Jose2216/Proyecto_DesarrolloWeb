@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data //se recolectan datos
 @Entity //entidad de tabla
-@Table(name = "PopularSeries")
+@Table(name = "popularseries")
 public class PopularSeries implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,17 +25,17 @@ public class PopularSeries implements Serializable {
     private long idPSerie;
     private String nombre;
     private String rutaImagen;
-
+    private boolean activo;
     @OneToMany
-    @JoinColumn(name = "id_PSerie")
+    @JoinColumn(name = "id_PSerie", updatable = false)
     List<Producto> productos;
 
     public PopularSeries() {
     }
-    
-    public PopularSeries(String descripcion) {
-        this.nombre = nombre;
-        this.rutaImagen = rutaImagen;
+
+    public PopularSeries(String PSerie, boolean activo) {
+        this.nombre = PSerie;
+        this.activo = activo;
     }
 
 }

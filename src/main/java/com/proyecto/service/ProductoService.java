@@ -4,19 +4,16 @@ import com.proyecto.domain.Categoria;
 import com.proyecto.domain.PopularSeries;
 import com.proyecto.domain.Producto;
 import java.util.List;
-import org.springframework.data.repository.query.Param;
 
 public interface ProductoService {
-     public List<Producto> getProductos();
+
+    //Se obtiene un listado de productos en un List
+    public List<Producto> getProductos(boolean activos);
 
     public Producto getProducto(Producto producto);
 
     public void save(Producto producto);
 
     public void delete(Producto producto);
-      
-    public List<Producto> findByCategoria(Categoria categoria);
-    
-    public List<Producto> findByPSerie(PopularSeries pSerie);
-    
+
 }
