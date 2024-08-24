@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      Week 11 4
-      sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-        <section fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container" authorize="hasRole('ROLE_ADMIN')">
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-3"> 
                         <button
@@ -24,7 +22,7 @@
             </div>
         </section>
         <!-- 2 Fragmento para agregar usuario, es la ventana modal -->
-        <section fragment="agregarUsuario">
+        <section th:fragment="agregarUsuario">
             <div id="agregarUsuario"
                  class="modal fade"
                  tabindex="-1"
@@ -83,16 +81,14 @@
             </div>
         </section>
         <!-- 3 Sección principal para mostrar la informaccion de la entidad usuario -->
-        <section fragment="listadoUsuarios" id="usuarios">
+        <section th:fragment="listadoUsuarios" id="usuarios">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
                                 <h4>[[#{usuario.listado}]]</h4></div>
-                            xmlns:th: th: sec: th: th: th: th:
-                            Week 11 5
-                            <div if="${usuarios != null and !usuarios.empty}">
+                            <div th:if="${usuarios != null and !usuarios.empty}">
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
@@ -103,12 +99,12 @@
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
-                                        <tr each="usuario, contador : ${usuarios}">
+                                        <tr th:each="usuario, contador : ${usuarios}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${usuario.username}]]</td>
                                             <td>[[${usuario.nombre}]]</td>
                                             <td>[[${usuario.apellidos}]]</td>
-                                            <td authorize="hasRole('ROLE_ADMIN')">
+                                            <td>
                                                 <a href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
@@ -118,7 +114,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" if="${usuarios == null or usuarios.empty}">
+                            <div class="text-center p-2" th:if="${usuarios == null or usuarios.empty}">
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
                         </div>
@@ -135,7 +131,7 @@
             </div>
         </section>
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
-        <section fragment="editarUsuario">
+        <section th:fragment="editarUsuario">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -144,7 +140,7 @@
                           class="was-validated"
                           enctype="multipart/form-data">
                         <input type="hidden" name="idUsuario" field="*{idUsuario}"/>
-                        <section replace="~{usuario/fragmentos :: botonesEditar}"/>
+                        <section th:replace="~{usuario/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
                                 <div class="row">
@@ -181,8 +177,6 @@
                                                     <label for="imagen">[[#{usuario.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    th: th: sec:th: th: th: th: th: th: th: th: th:th: th:th:
-                                                    Week 11 6
                                                     <img id="blah" src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
                                                 </div>
                                             </div>
@@ -195,7 +189,7 @@
             </div>
         </section>
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
-        <section fragment="botonesEditar">
+        <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
@@ -203,13 +197,13 @@
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid" authorize="hasRole('ROLE_ADMIN')"> 
+                    <div class="col-md-4 d-grid"> 
                         <a href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid" authorize="hasRole('ROLE_ADMIN')">
+                    <div class="col-md-4 d-grid">
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>

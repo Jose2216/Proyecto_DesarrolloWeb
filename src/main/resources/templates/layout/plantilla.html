@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
-        <title>Akihabara</title>
+        <title>[[#{aplicacion.titulo}]]</title>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>         
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" />
         <link rel="stylesheet" th:href="@{/css/style.css}" />
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
 
     </head>
@@ -35,77 +36,160 @@
          <!----- SECCION DE CATEGORIAS -->
          <section th:fragment="categorias" >
 
-             <h3 class="title"> Categorias</h3>
-             <div class="categories-container">
+                </head>
+                <body>
 
 
-                 <div class="categories-scroll">
+                    <!---<!-- SECCION DEL HEADER -->
+                    <header th:fragment="header" class="header">
+                        <img th:src="@{/images/Logo.png}" alt="Logo de Akihabara" class="logo">
+                            <section class="search-section">
+                                <div class="search-container">
+                                    <input type="text" id="search-input" class="search-input" placeholder="Buscar productos">
+                                        <button class="search-button">
+                                            <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+                                        </button>
+                                </div>
+                            </section>
+                            <section class="profile-section">
+                                <button class="profile-button">
+                                    <i class="fa-solid fa-user fa-2xl"></i>
+                                </button>
+                                <button class="shopping-button">
+                                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                                </button>
+                            </section>
+                    </header>
+
+                    <!----- SECCION DEL Barra de menu --> 
+                    <section th:fragment="barramenu">
+                        <!--<nav>
+                            <ul>
+                                <li><a href="#Inicio">Inicio</a></li>
+                                <li><a href="#Manga">Manga</a></li>
+                                <li><a href="#Funkopop">Funko pop</a></li>
+                                <li><a href="#Accesorios">Accesorios</a></li>
+                                <li><a href="#Masvendidos">Masvendidos</a></li>
+                            </ul>
+                        </nav>-->
+                        <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                            <div class="container">
+                                <!--<a href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a> 
+                                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>-->
+                                <div class="collapse navbar-collapse" justify-content-between id="navbarCollapse">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/panel/dashboard}">[[#{plantilla.inicio}]]</a></li>
+                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/productos/listado}">[[#{plantilla.manga}]]</a></li>
+                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/productos/listado}">[[#{plantilla.funko}]]</a></li>
+                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.accesorios}]]</a></li>
+                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.masvendidos}]]</a></li>
+                                    </ul>
+                                    <!--<div class="col-md-3">
+                                        <ul class="navbar-nav">                                
+                                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>
+                                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>
+                                        </ul>
+                                    </div>-->
+                                </div>
+                                <ul class="navbar-nav">
+                                    <!--<li class="nav-item px-2">
+                                        <a class="nav-menu-link nav-link"
+                                           th:href="@{/login}">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                        </a> 
+                                    </li>-->
+                                    <li class="nav-item text-white my-auto">
+                                        <i class="fas fa-user"></i>
+                                        <span>Bob</span>
+                                    </li>
+                                    <li class="nav-item my-auto">
+                                        <form method="post" th:action="@{/logout}">
+                                            <button class="btn btn-dark">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </section>
+
+                    <!----- SECCION DE CATEGORIAS -->
+                    <section th:fragment="categorias" >
+
+                        <h3 class="title"> Categorias</h3>
+                        <div class="categories-container">
 
 
-                     <div class="category" style="background-image: url('/images/Hoodies.jpeg');">
-                        <a href="/panel"> <button class="category-btn">Hoodie</button></a> 
-                     </div>
+                            <div class="categories-scroll">
 
-                     <div class="category" style="background-image: url('/images/Funko.jpeg');">
-                            <button class="category-btn">Funko pop</button>
-                     </div>
 
-                     <div class="category" style="background-image: url('/images/Figuras.jpeg');">
-                         <button class="category-btn">Figuras</button>
-                     </div>
+                                <div class="category" style="background-image: url('/images/Hoodies.jpeg');">
+                                    <a href="/panel"> <button class="category-btn">Hoodie</button></a> 
+                                </div>
 
-                     <div class="category" style="background-image: url('/images/taza.jpg');">
-                         <button class="category-btn">Tazas</button>
-                     </div>
+                                <div class="category" style="background-image: url('/images/Funko.jpeg');">
+                                    <button class="category-btn">Funko pop</button>
+                                </div>
 
-                     <div class="category" style="background-image: url('/images/gorra.jpg');">
-                         <button class="category-btn">Gorras</button>
-                     </div>
+                                <div class="category" style="background-image: url('/images/Figuras.jpeg');">
+                                    <button class="category-btn">Figuras</button>
+                                </div>
 
-                 </div>
+                                <div class="category" style="background-image: url('/images/taza.jpg');">
+                                    <button class="category-btn">Tazas</button>
+                                </div>
 
-             </div>
-         </section>
-         
-         
-         <!----- SECCION DEl Panel de Control -->
-         
-         <section th:fragment="panel" class="panel-section">
-             <form th:action="@{/logout}" method="post" style="align-self: flex-end">
-                 <button type="submit"><a class="panel-cerrar">Cerrar sesion</a></button>
-             </form>
-             <img th:src="@{/images/Perfil.png}" alt="Imagen de perfil" class="perfil-img">
-             <ol class="panel-menu">
-                 <li><a href="/" class="panel-menu-opciones"> Dashboard</a></li>
-                 <li><a href="/" class="panel-menu-opciones"> Contenido</a></li>
-                 <li><a href="/" class="panel-menu-opciones"> Seguridad</a></li>
-             </ol>
-         </section>
+                                <div class="category" style="background-image: url('/images/gorra.jpg');">
+                                    <button class="category-btn">Gorras</button>
+                                </div>
 
-        
-        <!---<!-- SECCION DEL FOOTER -->
-        <footer th:fragment="footer" class="bg-dark text-white text-center text-lg-start">
+                            </div>
 
-            <section class="social-section">
-                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="https://x.com/?lang=es" role="button"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"><i class="fab fa-instagram"></i></a>
-            </section>
+                        </div>
+                    </section>
 
-            <div class="legal-section">
 
-                <li><a href="#!" class="text-white">Politicas de privacidad</a></li>
-                <li><a href="#!" class="text-white">Terminos de servicio</a></li>
-                <li><a href="#!" class="text-white">Seguridad</a></li>
+                    <!----- SECCION DEl Panel de Control -->
 
-            </div>
+                    <section th:fragment="panel" class="panel-section">
+                        <form th:action="@{/logout}" method="post" style="align-self: flex-end">
+                            <button type="submit"><a class="panel-cerrar">Cerrar sesion</a></button>
+                        </form>
+                        <img th:src="@{/images/Perfil.png}" alt="Imagen de perfil" class="perfil-img">
+                            <ol class="panel-menu">
+                                <li><a href="/" class="panel-menu-opciones"> Dashboard</a></li>
+                                <li><a href="/" class="panel-menu-opciones"> Contenido</a></li>
+                                <li><a href="/" class="panel-menu-opciones"> Seguridad</a></li>
+                            </ol>
+                    </section>
 
-            <div class="">
-                © 2024 AKIHABARA.Todos los derechos reservados
-            </div>
 
-        </footer>
-        
-    </body>
-</html>
+                    <!---<!-- SECCION DEL FOOTER -->
+                    <footer th:fragment="footer" class="bg-dark text-white text-center text-lg-start">
+
+                        <section class="social-section">
+                            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-floating m-1" href="https://x.com/?lang=es" role="button"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"><i class="fab fa-instagram"></i></a>
+                        </section>
+
+                        <div class="legal-section">
+
+                            <li><a href="#!" class="text-white">Politicas de privacidad</a></li>
+                            <li><a href="#!" class="text-white">Terminos de servicio</a></li>
+                            <li><a href="#!" class="text-white">Seguridad</a></li>
+
+                        </div>
+
+                        <div class="">
+                            © 2024 AKIHABARA.Todos los derechos reservados
+                        </div>
+
+                    </footer>
+
+                </body>
+                </html>
 
