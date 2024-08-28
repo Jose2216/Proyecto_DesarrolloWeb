@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="layout/plantilla :: head">
-        <link rel="stylesheet" th:href="@{/css/styleCarrito.css}" />
-    </head>
-
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="layout/plantilla :: head"></head>
     <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
         <div class = cuadrado>
             <h1>Carrito</h1>
             <div id= line></div>

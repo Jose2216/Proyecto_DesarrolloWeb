@@ -1,6 +1,7 @@
 package com.proyecto.controller;
 
 import com.proyecto.domain.Usuario;
+import com.proyecto.service.FirebaseStorageService;
 import com.proyecto.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +33,15 @@ public class UsuarioController {
         return "/usuario/modifica";
     }
     
-//    @Autowired
-//    private FirebaseStorageService firebaseStorageService;
+    @Autowired
+    private FirebaseStorageService firebaseStorageService;
     
     @PostMapping("/guardar")
-    public String usuarioGuardar(Usuario usuario/*, @RequestParam("imagenFile") MultipartFile imagenFile*/){
-        //if(!imagenFile.isEmpty()){
+    public String usuarioGuardar(Usuario usuario, @RequestParam("imagenFile") MultipartFile imagenFile){
+        if(!imagenFile.isEmpty()){
             usuarioService.save(usuario, false);
-            //usuario.setRutaImagen(firebaseStorageService.cargaImagen(imagenFile, "usuario", usuario.getIdUsuario()));
-        //}
+            usuario.setRutaImagen(firebaseStorageService.cargaImagen(imagenFile, "usuario", usuario.getIdUsuario()));
+        }
         usuarioService.save(usuario, true);
         return "redirect:/usuario/listado";
     }

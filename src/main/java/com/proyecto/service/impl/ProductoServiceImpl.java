@@ -1,8 +1,6 @@
 package com.proyecto.service.impl;
 
 import com.proyecto.dao.ProductoDao;
-import com.proyecto.domain.Categoria;
-import com.proyecto.domain.PopularSeries;
 import com.proyecto.domain.Producto;
 import com.proyecto.service.ProductoService;
 import java.util.List;

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout/plantilla :: head}">
-
-    </head>
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}"></head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3"> 
                         <button
@@ -21,6 +20,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- 2 Fragmento para agregar usuario, es la ventana modal -->
         <section th:fragment="agregarUsuario">
             <div id="agregarUsuario"
@@ -37,7 +37,7 @@
                                     data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
-                        <form action="@{/usuario/guardar}" object="${usuario}"
+                        <form th:action="@{/usuario/guardar}" th:object="${usuario}"
                               method="POST" class="was-validated"
                               enctype="multipart/form-data">
                             <div class="modal-body">
@@ -80,6 +80,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- 3 Sección principal para mostrar la informaccion de la entidad usuario -->
         <section th:fragment="listadoUsuarios" id="usuarios">
             <div class="container">
@@ -104,13 +105,15 @@
                                             <td>[[${usuario.username}]]</td>
                                             <td>[[${usuario.nombre}]]</td>
                                             <td>[[${usuario.apellidos}]]</td>
-                                            <td>
-                                                <a href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a href="@{/usuario/modificar/}+${usuario.idUsuario}"
+                                                <a th:href="@{/usuario/modificar/}+${usuario.idUsuario}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -130,16 +133,17 @@
                 </div>
             </div>
         </section>
+        
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarUsuario">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <form method="POST"
-                          action="@{/usuario/guardar}" object="${usuario}"
+                          th:action="@{/usuario/guardar}" th:object="${usuario}"
                           class="was-validated"
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idUsuario" field="*{idUsuario}"/>
+                        <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
                         <section th:replace="~{usuario/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
@@ -153,31 +157,31 @@
                                                 <div class="mb-3">
                                                     <label for="nombre">[[#{usuario.nombre}]]</label>
                                                     <input type="text" class="form-control"
-                                                           name="nombre" field="*{nombre}"
+                                                           name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="apellidos">[[#{usuario.apellidos}]]</label>
                                                     <input type="text" class="form-control"
-                                                           name="apellidos" field="*{apellidos}"
+                                                           name="apellidos" th:field="*{apellidos}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="email">[[#{usuario.correo}]]</label>
                                                     <input type="email" class="form-control"
-                                                           name="correo" field="*{correo}"
+                                                           name="correo" th:field="*{correo}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="telefono">[[#{usuario.telefono}]]</label>
                                                     <input type="tel" class="form-control"
-                                                           name="telefono" field="*{telefono}">
+                                                           name="telefono" th:field="*{telefono}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="imagen">[[#{usuario.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,22 +192,23 @@
                 </div>
             </div>
         </section>
+                        
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a href="@{/usuario/listado}" class="btn btn-primary">
+                        <a th:href="@{/usuario/listado}" class="btn btn-primary">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid"> 
-                        <a href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')"> 
+                        <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid">
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>

@@ -2,6 +2,7 @@ package com.proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -22,8 +23,12 @@ public class Usuario implements Serializable{
     private String correo;
     private String telefono;
     @Column(name="ruta_imagen")
-    private String imagen;
+    private String rutaImagen;
     private boolean activo;
+    
+    @OneToMany
+    @JoinColumn(name = "id_usuario")
+    List<Rol> roles;
     
     public Usuario(){
         
@@ -36,7 +41,7 @@ public class Usuario implements Serializable{
         this.apellidos = apellidos;
         this.correo = correo;
         this.telefono = telefono;
-        this.imagen = imagen;
+        this.rutaImagen = imagen;
         this.activo = true;
     }
 }

@@ -19,6 +19,7 @@ public class Producto implements Serializable {
     private String nombre;
     private String descripcion;
     private double precio;
+    @Column(name = "ruta_imagen")
     private String rutaImagen;
     private boolean activo;
 
