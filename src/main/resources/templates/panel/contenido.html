@@ -1,9 +1,13 @@
-<html xmlns="http://www.w3.org/1999/xhtml"       
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="layout/plantilla :: head"></head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
-        <div>TODO write content</div>
+        <section th:replace="~{panel/fragmentos :: menuDashboard}"/> 
+        <section th:replace="~{panel/fragmentos :: contenidoPanel}"/>  
+
     </body>
 </html>

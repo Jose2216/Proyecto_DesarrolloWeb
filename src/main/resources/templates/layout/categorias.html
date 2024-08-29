@@ -4,10 +4,9 @@
         <link rel="stylesheet" href="/css/style.css" />
     </head>
 <body>
-  
-    <section th:replace="~{panel/fragmentos :: menuDashboard}"/> 
-    <section th:replace="~{panel/fragmentos :: seguridadPanel}"/> 
-    
+    <section th:replace="~{layout/fragmentos :: header}"/>
+    <section th:replace="~{layout/fragmentos :: categorias}"/>    
+    <section th:replace="~{layout/fragmentos :: footer}"/>
 </body>
 </html>
 

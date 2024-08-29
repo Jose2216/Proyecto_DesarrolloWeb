@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+<body>
+    <section th:replace="~{layout/fragmentos :: header}"/>
+    <section th:replace="~{layout/fragmentos :: scrollPrincipal}"/>    
+    <section th:replace="~{layout/fragmentos :: categoriasPrincipal}"/> 
+    <section th:replace="~{layout/fragmentos :: compraPrincipal}"/> 
+    <section th:replace="~{layout/fragmentos :: productosPrincipal}"/> 
+    <section th:replace="~{layout/fragmentos :: footer}"/>
+</body>
+</html>
+

@@ -2,6 +2,7 @@ package com.proyecto.controller;
 
 import com.proyecto.domain.Categoria;
 import com.proyecto.domain.PopularSeries;
+import com.proyecto.domain.Producto;
 import com.proyecto.service.CategoriaService;
 import com.proyecto.service.PopularSeriesService;
 import com.proyecto.service.ProductoService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -41,21 +43,27 @@ public class ProductoController {
 
     @GetMapping("/listado/categoria/{idCategoria}")
     public String ProductosPorCategoria(Categoria categoria, Model model) {
+        var categoriaEncontrada = categoriaService.getCategoria(categoria);
         var productos = categoriaService.getCategoria(categoria).getProductos();
         var categorias = categoriaService.getCategorias(false);
+        model.addAttribute("categoria", categoriaEncontrada);
         model.addAttribute("productos", productos);
         model.addAttribute("categorias", categorias);
         model.addAttribute("totalProductos", productos.size());
+        this.Inicio(model);
         return "/producto/listado";
     }
 
     @GetMapping("/listado/serie/{idPSerie}")
     public String ProductosPorSerie(PopularSeries PSerie, Model model) {
+        var popularSerie = popularSeriesService.getPopularSerie(PSerie);
         var productos = popularSeriesService.getPopularSerie(PSerie).getProductos();
         var popularSeries = popularSeriesService.getPopularSeries(false);
+        model.addAttribute("popularserie", popularSerie);
         model.addAttribute("productos", productos);
         model.addAttribute("popularseries", popularSeries);
         model.addAttribute("totalProductos", productos.size());
+        this.Inicio(model);
         return "/producto/listado";
     }
 

@@ -1,49 +1,67 @@
 !DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" 
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="layout/plantilla :: head"></head>
-    <body>
-        <section th:fragment="categoriasTabs" id="categorias">
-            <div class="row py-4">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" 
-                           aria-current="page" 
-                           href="/pruebas/listado"
-                           >[[#{producto.inicio}]]</a>
-                    </li>
-                    <li th:each="categoria : ${categorias}" class="nav-item">
-                        <a class="nav-link" 
-                           th:href="@{/producto/listado/categoria/}+${categoria.idCategoria}"
-                           >[[${categoria.nombre_categoria}]]</a>
-                    </li>                    
-                </ul>
-            </div>
-        </section>
-        <section th:fragment="popularSeries" class="popular-series">
-            <div class="series-container" th:each="popularseries : ${popularseries}">
-                <a th:href="@{/producto/listado/serie/}+${popularseries.idPSerie}">
-                    <img th:src="@{${popularseries.rutaImagen}}" alt="[[${popularseries.nombre}]]" class="series-img">
-                </a>
-            </div>
-        </section>
-        <section th:fragment="listadoProductos" id="productos">
-            <div class="row row-cols-4">
-                <div class="card" th:each="p : ${productos}">
-                    <figure><img th:src="${p.rutaImagen}" 
-                                 class="card-img-top" alt="..."
-                                 height="200"/>
-                    </figure>
-                    <div class="card-header">
-                        <h4 class="card-title">[[${p.nombre}]]</h4>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-text">[[${p.precio}]]</h4>
-                    </div>
-                    <button th:text="'Añadir al carrito'"></button>
-                </div>
-            </div>
-        </section>
-    </body>
-</html>
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Akihabara</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <link rel="stylesheet" href="/css/style.css">
+                </head>
+                <body>
+                    <section th:fragment="categoriasTabs" id="categorias">
+                        <div class="row py-4">
+                            <ul class="nav-tabs-Categorias">                              
+                                <li th:each="categoria : ${categorias}" class="nav-item-Categorias">
+                                    <a class="nav-link-Categorias" 
+                                       th:href="@{/producto/listado/categoria/}+${categoria.idCategoria}"
+                                       >[[${categoria.nombre_categoria}]]</a>
+                                </li>                    
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section th:fragment="popularSeries" class="popular-series">
+                        <h2 class="popular-series-title">Popular Series</h2>
+                        <div class="series-container" th:each="popularseries : ${popularseries}">
+                            <a th:href="@{/producto/listado/serie/}+${popularseries.idPSerie}">
+                                <img th:src="@{${popularseries.rutaImagen}}" alt="[[${popularseries.nombre}]]" class="series-img">
+                            </a>
+                        </div>
+                    </section>
+
+                    <section th:fragment="listadoProductos" id="productos">
+                        <div class="text-center">
+                            <li th:each="categoria : ${categoria}" style="list-style-type: none;">
+                                <h2 class="category-title">[[${categoria.nombre_categoria}]]</h2>
+                            </li>
+                        </div>
+
+                        <div>
+                            <li th:each="popularserie : ${popularserie}" style="list-style-type: none;">
+                                <img th:src="@{${popularserie.rutaImagen}}" class="series-img">
+                            </li>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-md-4 col-lg-2 mb-4" th:each="p : ${productos}">
+                                <div class="card-Productos">
+                                    <figure>
+                                        <img th:src="${p.rutaImagen}" class="card-img-top-Productos" alt="..."/>
+                                    </figure>
+                                    <div class="card-header">
+                                        <h4 class="card-title-Productos">[[${p.nombre}]]</h4>
+                                    </div>
+                                    <div class="card-body-Productos">
+                                        <h4 class="card-text-Productos">[[${p.precio}]]</h4>
+                                    </div>
+                                    <a th:href="@{/carrito/agregar/{idProducto}(idProducto=${p.idProducto})}" class="btn-primary-Productos">Añadir al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+                </body>
+                </html>

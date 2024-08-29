@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>  
+        <!-- SECCION DEL HEADER -->
+        <header th:fragment="header" class="header">
+            <a th:href="@{/layout/principal}">
+                <img th:src="@{/images/Logo.png}" alt="Logo de Akihabara" class="logo">
+            </a>
+            <section class="search-section">
+                <div class="search-container">
+                    <input type="text" id="search-input" class="search-input" placeholder="Buscar productos">
+                    <button class="search-button">
+                        <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+                    </button>
+                </div>
+            </section>
+            <section class="profile-section">
+                <button class="profile-button">
+                    <i class="fa-solid fa-user fa-2xl"></i>
+                </button>
+                <button class="shopping-button">
+                    <a th:href="@{/carrito/listado}" class="fa-solid fa-cart-shopping fa-2xl"></a>
+                </button>
+            </section>
+        </header>
+        
+        <!-- SCROLL DE LOS BANNER -->
+         <section th:fragment="scrollPrincipal" class="slider-container">
+     
+            <img class="slider-item" src="/images/Banner_1.jpeg" alt="Banner 1" >
+            <img class="slider-item" src="/images/Banner_2.jpeg" alt="Banner 2" >
+            <img class="slider-item" src="/images/Banner_3.jpeg" alt="Banner 3" >
+ 
+        </section>
+        
+        
+                <!-- SECCION DE LOS TRES ANUNCIOS (IMAGENES) -->
+
+        <section th:fragment="categoriasPrincipal" class="menuCategorias" >
+                <div class="categorias">
+                    <div class="itemCategoria">
+                        <a th:href="@{/layout/categorias}">
+                            <img src="/images/Cat_1.jpeg" alt="Categoria 1" class="cat-pic">
+                        </a>
+                    </div>
+                    <div class="itemCategoria">
+                        <a th:href="@{/layout/categorias}">
+                            <img src="/images/Cat_2.jpeg" alt="Categoria 2" class="cat-pic">
+                        </a>
+                    </div>
+
+                    <div class="itemCategoria">
+                        <a th:href="@{/layout/categorias}">
+                            <img src="/images/Cat_3.jpeg" alt="Categoria 3" class="cat-pic">
+                        </a>
+                    </div>
+
+                </div>
+        </section>
+        <!-- Imagen con el boton de comprar ahora -->
+        <section th:fragment="compraPrincipal" class="compraPrincipal" >
+            <div class="compra">
+                <a th:href="@{/page1}">
+                    <img src="/images/Banner_2.jpeg" alt="Categoria 3" class="buy-pic">
+                    <button class="compraBtn">Comprar ahora</button>
+                </a>
+            </div>
+        </section>
+        
+        <!-- SECCION DE LOS PRODUCTOS DESTACADOS -->
+        <section th:fragment="productosPrincipal" class="productosPrincipal" >
+            <h3> Productos destacados</h3>
+            <section class="containerProductosPrincipal">
+                
+                <div class="productoPrincipal">
+                    <a th:href="@{/page1}">
+                        <img src="/images/Naruto.jpeg" alt="Categoria 3" class="productos-pic">
+                    </a>
+                </div>
+
+                <div class="productoPrincipal">
+                    <a th:href="@{/page1}">
+                        <img src="/images/Figura.jpeg" alt="Categoria 3" class="productos-pic">
+                    </a>
+                </div>
+
+                <div class="productoPrincipal">
+                    <a th:href="@{/page1}">
+                        <img src="/images/Figura2.jpeg" alt="Categoria 3" class="productos-pic">
+                    </a>
+                </div>
+                
+                <div class="productoPrincipal">
+                    <a th:href="@{/page1}">
+                        <img src="/images/Audifonos.jpeg" alt="Categoria 3" class="buy-pic">
+                    </a>
+                </div>
+                
+            </section>
+
+        </section>
+        
+        
+        <!-- SECCION DE LAS CATEGORIAS BUTTON Y SCROLL -->
+        
+        <section th:fragment="categorias" >
+
+            <h3 class="title"> Categorias</h3>
+            <div class="categories-container">
+
+
+                <div class="categories-scroll">
+
+
+                    <div class="category" style="background-image: url('/images/Hoodies.jpeg');">
+                        <a href="/producto/listado"> <button class="category-btn">Hoodie</button></a> 
+                    </div>
+
+                    <div class="category" style="background-image: url('/images/Funko.jpeg');">
+                        <a href="/producto/listado"><button class="category-btn">Funko pop</button></a>
+                    </div>
+
+                    <div class="category" style="background-image: url('/images/Figuras.jpeg');">
+                        <a href="/producto/listado"><button class="category-btn">Figuras</button></a>
+                    </div>
+
+                    <div class="category" style="background-image: url('/images/taza.jpg');">
+                        <a href="/producto/listado"><button class="category-btn">Tazas</button></a>
+                    </div>
+
+                    <div class="category" style="background-image: url('/images/gorra.jpg');">
+                        <a href="/producto/listado"><button class="category-btn">Gorras</button></a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+        
+        
+        
+        
+        <footer th:fragment="footer" class="bg-dark text-white text-center text-lg-start">
+            <section class="social-section">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://x.com/?lang=es" role="button"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"><i class="fab fa-instagram"></i></a>
+            </section>
+            <div class="legal-section">
+                <li><a href="#!" class="text-white">Politicas de privacidad</a></li>
+                <li><a href="#!" class="text-white">Terminos de servicio</a></li>
+                <li><a href="#!" class="text-white">Seguridad</a></li>
+            </div>
+            <div class="">
+                © 2024 AKIHABARA.Todos los derechos reservados
+            </div>
+        </footer>
+
+        <script>
+            console.log("Script cargado");
+
+            document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.item');
+            let currentIndex = 0;
+
+            function showNextItem() {
+                items[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].classList.add('active');
+            }
+
+            setInterval(showNextItem, 3000); 
+        });
+        </script> 
+    </body>
+</html>

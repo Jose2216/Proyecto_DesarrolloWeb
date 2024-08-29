@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" 
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"> 
-    <head th:replace="layout/plantilla :: head"></head>
+      xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
     <body>
+        
         <section th:fragment="menuDashboard" id="categorias" class="vertical-menu">
             <button class="logout-button">
                 <i class="fa-solid fa-sign-out-alt"></i> Cerrar Sesión
@@ -12,107 +14,127 @@
                 <img src="/images/Perfil.png" alt="Foto de perfil" class="profile-pic">
             </div>
             <nav class="menu-options">
-                <a href="#dashboard" class="menu-item">Dashboard</a>
-                <a href="#content" class="menu-item">Contenido</a>
-                <a href="#security" class="menu-item">Seguridad</a>
+                <a th:href="@{/panel/dashboard}" class="menu-item">Dashboard</a>
+                <a th:href="@{/panel/contenido}" class="menu-item">Contenido</a>
+                <a th:href="@{/panel/seguridad}" class="menu-item">Seguridad</a>
             </nav>
         </section>
         
-        <!-- SECCION DEL SEGURIDAD -->    
-        <section th:fragment="seguridadPanel" id="categorias" class="seguridad-panel panel">
-            <div id="alertas-content">
-                <h2>Alertas</h2>
-                <div id="backups-content">
-                                                        
-                </div>
-            </div>
-            </div>
-            <div class="box">
-                <h2>Backups</h2>
-                <div id="backups-content">
-                                                        
-                </div>
-            </div>
-            <div class="box">
-                <h2>Usuarios y roles</h2>
-                <div id="usuarios-roles-content">
-                    
-                </div>
-            </div>
-            </div>
-        </section>
-        
-        
         <!-- SECCION DEL CONTENIDO -->
-        
-        
          <section th:fragment="contenidoPanel" id="contendio" class="contenido-panel panel">
-            <div>PRUEBAS EDICION DE CONTENIDO </div> 
-        </section>
-        
-        
-        <!-- SECCION DEL DASHBOARD -->
-        
-        <section th:fragment="dataDashboard" id="data" class="data panel">
-
-            <div class="container mt-5">
-                <h1>Dashboard</h1>
-
-                <div>
-                    <h2>Ventas por Día</h2>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="venta : ${ventasPorDia}">
-                                <td th:text="${venta.fechaVenta}"></td>
-                                <td th:text="${venta.total}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div>
-                    <h2>Ventas por Mes</h2>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="venta : ${ventasPorMes}">
-                                <td th:text="${venta.fechaVenta}"></td>
-                                <td th:text="${venta.total}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div>
-                    <h2>Ventas por Año</h2>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="venta : ${ventasPorAnio}">
-                                <td th:text="${venta.fechaVenta}"></td>
-                                <td th:text="${venta.total}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+             <section id="product-management">
+            <h2>Gestión de Productos</h2>
+            <div class="button-container">
+                <button class="product-button" id="add-product">Agregar Producto</button>
+                <button class="product-button" id="edit-product">Modificar Producto</button>
+                <button class="product-button" id="delete-product">Eliminar Producto</button>
             </div>
         </section>
+             
+             <section id="product-management">
+            <h2>Gestión de Categorias</h2>
+            <div class="button-container">
+                <button class="product-button" id="add-product">Agregar Categorias</button>
+                <button class="product-button" id="edit-product">Modificar Categorias</button>
+                <button class="product-button" id="delete-product">Eliminar Categorias</button>
+            </div>
+        </section>
+        </section>
+        
+        
+       
+         <!-- SECCION DEL SEGURIDAD   -->
+         <section th:fragment="seguridadPanel" id="categorias" class="seguridad-panel panel">
+             <div class="box">
+                 <h2>Alertas</h2>
+                 <div class="table-container">
+                   
+                     <table>
+                         <thead>
+                             <tr>
+   
+                             </tr>
+                         </thead>
+                         <tbody>
 
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+
+             <div class="box">
+                 <h2>Gestión de Backups</h2>
+                 <div class="table-container">
+                     <button onclick="window.location.href='/generar-backup'">Generar Nuevo Backup</button>
+
+                     <table>
+                         <thead>
+                             <tr>
+                                 <th>ID</th>
+                                 <th>Nombre</th>
+                                 <th>Fecha de Creación</th>
+                                 <th>Tamaño</th>
+                                 <th>Acciones</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr th:each="backup : ${backups}">
+                                 <td th:text="${backup.backupId}"></td>
+                                 <td th:text="${backup.nombre}"></td>
+                                 <td th:text="${backup.fechaCreacion}"></td>
+                                 <td th:text="${backup.tamaño}"></td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+             
+             <div class="box">
+                 <h2>Usuarios y Roles</h2>
+                 <div class="table-container">
+                     <table class="table table-bordered">
+                         <thead>
+                             <tr>
+                                 <th>Rol</th>
+                                 <th>Usuario</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr th:each="rol : ${roles}">
+                                 <td th:text="${rol.nombre}"></td>
+                                 <td th:text="${rol.usuario.username}"></td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </section>  
+
+        
+        <!-- SECCION DEL DASHBOARD --> 
+        <section th:fragment="dataDashboard" id="data" class="data panel">
+            <h1>Dashboard</h1>
+            <div class="container mt-5">                
+                <div class="container-stock">
+                    <h2>Stock Disponible</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="stock : ${stockDisponible}">
+                                <td th:text="${stock.producto.nombre}"></td>
+                                <td th:text="${stock.cantidad}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </section>  
     </body>
 </html>
